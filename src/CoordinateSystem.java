@@ -36,6 +36,13 @@ public class CoordinateSystem extends JPanel implements MouseListener, MouseMoti
         // 转换为RGB颜色
         return Color.getHSBColor(hue, saturation, brightness);
     }
+    
+    private boolean renderLegacyBlueArea = true;
+    
+    public void setRenderLegacyBlueArea(boolean render) {
+        this.renderLegacyBlueArea = render;
+        repaint();
+    }
 
     public CoordinateSystem() {
         setBackground(Color.WHITE);
@@ -116,29 +123,31 @@ public class CoordinateSystem extends JPanel implements MouseListener, MouseMoti
             g2.fill(new Rectangle2D.Double(x, y, width, height));
         }
         
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.35f));
-        g2.setColor(new Color(0, 0, 255));
-        
-     // 定义蓝色区域边界（X/Z范围-512到1024）
-        double blueLeft = -512;
-        double blueRight = 1024;
-        double blueBottom = -512;
-        double blueTop = 1024;
+        if (renderLegacyBlueArea) {
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.35f));
+            g2.setColor(new Color(0, 0, 255));
+            
+            // 定义蓝色区域边界（X/Z范围-512到1024）
+            double blueLeft = -512;
+            double blueRight = 1024;
+            double blueBottom = -512;
+            double blueTop = 1024;
 
-        // 确定实际绘制范围
-        double renderLeft = Math.max(blueLeft, worldLeft);
-        double renderRight = Math.min(blueRight, worldRight);
-        double renderBottom = Math.max(blueBottom, worldBottom);
-        double renderTop = Math.min(blueTop, worldTop);
+            // 确定实际绘制范围
+            double renderLeft = Math.max(blueLeft, worldLeft);
+            double renderRight = Math.min(blueRight, worldRight);
+            double renderBottom = Math.max(blueBottom, worldBottom);
+            double renderTop = Math.min(blueTop, worldTop);
 
-        // 当可视区域与蓝色区域有交集时绘制
-        if (renderLeft < renderRight && renderBottom < renderTop) {
-            g2.fill(new Rectangle2D.Double(
-                renderLeft,
-                renderBottom,
-                renderRight - renderLeft,
-                renderTop - renderBottom
-            ));
+            // 当可视区域与蓝色区域有交集时绘制
+            if (renderLeft < renderRight && renderBottom < renderTop) {
+                g2.fill(new Rectangle2D.Double(
+                    renderLeft,
+                    renderBottom,
+                    renderRight - renderLeft,
+                    renderTop - renderBottom
+                ));
+            }
         }
 
         g2.setComposite(original);
