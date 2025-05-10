@@ -10,6 +10,7 @@
 * X/Z over 33554432 does not draw any point.
 * You can use fuzzy search when you don't know what the exactly position is.
 * You can back to the (0,0) by a single botton.
+* You can switch Infdev versions by a single menu.
 
 # Available in these versions
 * **Minecraft Infdev** `20100227`~`20100325`
