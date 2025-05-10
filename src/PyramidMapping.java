@@ -76,6 +76,17 @@ public class PyramidMapping {
             // 事件监听
             searchBtn.addActionListener(e -> handleSearch(xField, zField, panel, provider,rangeCombo));
             resetBtn.addActionListener(e -> panel.resetViewport());
+            rangeCombo.addActionListener(e -> {
+            	String selected = (String) rangeCombo.getSelectedItem();
+                // 0227版本启用蓝色区域，0313~0325禁用
+                boolean shouldRender = "Inf 0227".equals(selected);
+                panel.setRenderLegacyBlueArea(shouldRender);
+            	
+                CoordinateSystem.PointProvider newProvider = createPointProvider(rangeCombo);
+                panel.setPointProvider(newProvider); // 这会自动清除选中状态
+                panel.selectedPoint = null;
+                panel.repaint();
+            });
         });
     }
 
