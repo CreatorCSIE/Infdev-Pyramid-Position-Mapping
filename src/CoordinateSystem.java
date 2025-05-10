@@ -234,12 +234,14 @@ public class CoordinateSystem extends JPanel implements MouseListener, MouseMoti
             g.drawString(String.format("(%.0f, %.0f)", selectedPoint.x, selectedPoint.y), p.x + 5, p.y - 5);
         }
         
-        g.setColor(Color.BLACK);
+        Point2D.Double viewportCenter = screenToWorld(w/2, h/2);
+        
         g.setFont(new Font("微软雅黑", Font.PLAIN, 12));
         FontMetrics fm = g.getFontMetrics();
-        String debugText = String.format("缩放倍数：%.2f  鼠标位置：(%.0f, %.0f)", scale, debugMouseX, debugMouseY);
+        String debugText = String.format("缩放倍数：%.2f  视点坐标：(%.0f, %.0f)", 
+                          scale, viewportCenter.x, viewportCenter.y);
         int x = 10;
-        int y = h - fm.getDescent() - 5; // 左下角位置
+        int y = h - fm.getDescent() - 5;
         g.drawString(debugText, x, y);
     }
 
@@ -378,22 +380,5 @@ public class CoordinateSystem extends JPanel implements MouseListener, MouseMoti
     @Override public void mouseReleased(MouseEvent e) {}
     @Override public void mouseEntered(MouseEvent e) {}
     @Override public void mouseExited(MouseEvent e) {}
-    @Override public void mouseMoved(MouseEvent e) {
-    	Point2D.Double worldPoint = screenToWorld(e.getX(), e.getY());
-        debugMouseX = worldPoint.x;
-        debugMouseY = worldPoint.y;
-        repaint(); // 触发重绘以更新调试信息
-    }
-
-    /*public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("坐标系程序");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(800, 600);
-            frame.setLocationRelativeTo(null);
-            frame.add(new DraggableZoomableCoordinateSystem());
-            frame.setVisible(true);
-        });
-    }
-    */
+    @Override public void mouseMoved(MouseEvent e) {}
 }
