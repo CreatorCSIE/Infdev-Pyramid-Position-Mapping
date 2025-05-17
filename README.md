@@ -15,6 +15,9 @@
 # Available in these versions
 * **Minecraft Infdev** `20100227`~`20100325`
 
+# Screenshot
+![](screenshot.png)
+
 # Releases
 * Just download from the [Releases](https://github.com/CreatorCSIE/Infdev-Pyramid-Position-Mapping/releases).
 
