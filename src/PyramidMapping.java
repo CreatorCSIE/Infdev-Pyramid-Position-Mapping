@@ -59,7 +59,7 @@ public class PyramidMapping {
             
             JLabel authorLabel = new JLabel("<html><div style='text-align:right;'>"
                     + "Made by CreatorCSIE<br>"
-                    + "<small>版本：1.2.1</small></div></html>");
+                    + "<small>版本：1.2.2</small></div></html>");
                 authorLabel.setFont(new Font("微软雅黑", Font.PLAIN, 12));
                 authorLabel.setForeground(new Color(100, 100, 150));
 
