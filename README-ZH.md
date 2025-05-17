@@ -15,6 +15,9 @@
 # 适用范围
 * **Minecraft Infdev** `20100227`~`20100325`
 
+# 程序截图
+![](screenshot.png)
+
 # 发布
 * 在[Releases](https://github.com/CreatorCSIE/Infdev-Pyramid-Position-Mapping/releases)下载已发布的版本。
 
