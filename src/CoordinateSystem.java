@@ -272,7 +272,7 @@ public class CoordinateSystem extends JPanel implements MouseListener, MouseMoti
     private Point2D.Double screenToWorld(int x, int y) {
         // 修正Y轴坐标转换
         double wx = -(x - getWidth() / 2.0) / scale - offsetX;
-        double wy = (getHeight() / 2.0 - y) / scale - offsetY;
+        double wy = (getHeight() / 2.0 - y) / scale - offsetY - 10;
         return new Point2D.Double(wx, wy);
     }
 
@@ -331,7 +331,7 @@ public class CoordinateSystem extends JPanel implements MouseListener, MouseMoti
                 double top = (h / 2.0) / scale - offsetY;
 
                 List<Point2D.Double> visiblePoints = pointProvider.getVisiblePoints(left, right, bottom, top);
-                double threshold = 5 / scale; // 匹配点的实际半径
+                double threshold = 10 / scale; // 匹配点的实际半径
 
                 for (Point2D.Double pt : visiblePoints) {
                     if (world.distance(pt) < threshold) {
