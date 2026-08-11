@@ -81,7 +81,10 @@ public class CoordinateSystem extends JPanel implements MouseListener, MouseMoti
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
         double factor = Math.pow(1.1, -e.getPreciseWheelRotation());
-        viewport.zoomAt(e.getX(), e.getY(), factor, getWidth(), getHeight());
+        // 围绕屏幕中心（十字准星处）缩放，而非光标位置
+        int cx = getWidth() / 2;
+        int cy = getHeight() / 2;
+        viewport.zoomAt(cx, cy, factor, getWidth(), getHeight());
         repaint();
     }
 
