@@ -1,3 +1,5 @@
+package brickmap;
+
 import javax.swing.*;
 import java.util.Random;
 import java.awt.BorderLayout;
@@ -54,12 +56,12 @@ public class PyramidMapping {
             searchPanel.add(Box.createHorizontalGlue(), gbc);
 
             CoordinateSystem panel = new CoordinateSystem();
-            CoordinateSystem.PointProvider provider = createPointProvider(rangeCombo); // 提取生成逻辑
+            PointProvider provider = createPointProvider(rangeCombo); // 提取生成逻辑
             panel.setPointProvider(provider);
             
             JLabel authorLabel = new JLabel("<html><div style='text-align:right;'>"
                     + "Made by CreatorCSIE<br>"
-                    + "<small>版本：1.2.2</small></div></html>");
+                    + "<small>版本：1.3</small></div></html>");
                 authorLabel.setFont(new Font("微软雅黑", Font.PLAIN, 12));
                 authorLabel.setForeground(new Color(100, 100, 150));
 
@@ -82,7 +84,7 @@ public class PyramidMapping {
                 boolean shouldRender = "Inf 0227".equals(selected);
                 panel.setRenderLegacyBlueArea(shouldRender);
             	
-                CoordinateSystem.PointProvider newProvider = createPointProvider(rangeCombo);
+                PointProvider newProvider = createPointProvider(rangeCombo);
                 panel.setPointProvider(newProvider); // 这会自动清除选中状态
                 panel.selectedPoint = null;
                 panel.repaint();
@@ -90,8 +92,8 @@ public class PyramidMapping {
         });
     }
 
-    private static CoordinateSystem.PointProvider createPointProvider(JComboBox<String> rangeCombo) {
-        return new CoordinateSystem.PointProvider() {
+    private static PointProvider createPointProvider(JComboBox<String> rangeCombo) {
+        return new PointProvider() {
             @Override
             public List<Point2D.Double> getVisiblePoints(double left, double right, double bottom, double top) {
                 List<Point2D.Double> list = new ArrayList<>();
@@ -129,7 +131,7 @@ public class PyramidMapping {
     }
 
     private static void handleSearch(JTextField xField, JTextField zField,
-            CoordinateSystem panel, CoordinateSystem.PointProvider provider, JComboBox<String> rangeCombo) {
+            CoordinateSystem panel, PointProvider provider, JComboBox<String> rangeCombo) {
     		// 获取并清理输入
     		String xInput = xField.getText().replace(",", "").trim();
     			String zInput = zField.getText().replace(",", "").trim();

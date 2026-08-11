@@ -24,11 +24,14 @@
 * 左键双击jar或者在命令提示符下用`java -jar BrickMapping.jar`运行此程序
 
 # 构建
-下载这个项目的源代码（用git clone也可以），然后使用eclipse、IntelliJ IDEA等软件编译即可。
+下载这个项目的源代码（用git clone也可以）。在项目根目录运行`compile.bat`即可编译并把`BrickMapping.jar`打包到项目根目录，也可以使用Eclipse、IntelliJ IDEA等IDE编译。
 
 示例（使用了git clone）:
 
 `git clone https://github.com/CreatorCSIE/Infdev-Pyramid-Position-Mapping.git`
+
+# 运行
+编译完成后，双击`run.bat`，或运行`java -jar BrickMapping.jar`启动程序。
 
 # Credits
 * **CreatorCSIE (myself)**

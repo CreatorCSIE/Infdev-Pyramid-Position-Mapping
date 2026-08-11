@@ -26,13 +26,16 @@
 # Build
 Just download the source code, or use git clone.
 
-And compile it with Eclipse, IntelliJ IDEA or etc.
+Run `compile.bat` in the project root to compile and package `BrickMapping.jar` into the project root, or compile it with Eclipse, IntelliJ IDEA or etc.
 
 I'm Chinese so the source code uses Chinese language, you can adapt it to your language.
 
 example (with git clone):
 
 `git clone https://github.com/CreatorCSIE/Infdev-Pyramid-Position-Mapping.git`
+
+# Run
+After building, run the program by double-clicking `run.bat`, or run `java -jar BrickMapping.jar`.
 
 # Credits
 * **CreatorCSIE (myself)**
